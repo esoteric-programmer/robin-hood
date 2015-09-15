@@ -1,0 +1,15 @@
+Fonts: TempoFont, http://www.1001fonts.com/tempofont-font.html (public domain)
+
+Background Music:
+Notes: Telemann Sonata in F. (public domain)
+Clarinet sample: clarinet-C-octave2.wav from "OpenPathMusic samples v.2", CC BY 3.0.
+Creator: One Laptop per Child, http://wiki.laptop.org/go/Sound_samples
+
+Makefile: Stolen from another homebrew project.
+
+Images of Robin Hood and Sheriff's henchmen: Originally created by my sister Christine some years ago; vectorized by me; She allowed me to use it for the game, but I don't know the licence. I should ask her, I would be happy if it would be public domain, too.
+
+Everything else (except the binaries): Own work, public domain.
+
+The binaries contain the flute sample as well as ctrulib, sf2d, etc. Therefore the binaries are not in public domain.
+
