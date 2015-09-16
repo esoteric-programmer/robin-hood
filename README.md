@@ -1,4 +1,4 @@
-# Robin Hood's Platform Game v1.0 by Matthias.
+# Robin Hood's Platform Game
 
 Robin Hood's Platform Game is a single player platform game.
 Can you defeat Sheriff of Nottingham's henchmen and reach the finish?
