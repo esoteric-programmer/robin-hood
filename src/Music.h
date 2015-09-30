@@ -1,7 +1,7 @@
 #ifndef MUSIC_INCLUDED
 #define MUSIC_INCLUDED
 
-#include "tracker_defines.h"
+#include "tracker.h"
 #include "Sound.h"
 
 class CMusic {
@@ -16,7 +16,7 @@ private:
 	bool sound_active;
 
 public:
-	CMusic(Composition c, CRawAudio instrument, float volume = 0.2f);
+	CMusic(Composition c, const RawAudio instrument, float volume = 0.2f);
 	void update(u16 ticks);
 	void play();
 	void pause();

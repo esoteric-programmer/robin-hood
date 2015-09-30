@@ -1,8 +1,8 @@
-#include "../Texture.h"
+#include "Texture.h"
 
 /* GIMP RGBA C-Source image dump (113.c) */
 
-extern const CRawImage ENEMY_WALKING_RIGHT = {
+extern const RawImage ENEMY_WALKING_RIGHT = {
   40, 43, 4,
   "\377\377\377\0\377\377\377\0\377\377\377\0\377\377\377\0\377\377\377\0\377"
   "\377\377\0\377\377\377\0\377\377\377\0\377\377\377\0\377\377\377\0\377\377"

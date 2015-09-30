@@ -1,8 +1,8 @@
-#include "../Texture.h"
+#include "Texture.h"
 
 /* GIMP RGBA C-Source image dump (213.c) */
 
-extern const CRawImage TEXT_GIVE_UP = {
+extern const RawImage TEXT_GIVE_UP = {
   141, 38, 4,
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"

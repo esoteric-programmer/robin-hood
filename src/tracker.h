@@ -29,12 +29,14 @@
 #define B5 23
 #define C6 24
 
-#define WHOLE_NOTE 192
-#define HALF_NOTE 96
-#define QUARTER_NOTE 48
-#define EIGHTH_NOTE 24
-#define SIXTEENTH_NOTE 12
+#define THIRTY_SECOND_NOTE 6
 #define SILENCE_AT_END 4
+
+#define SIXTEENTH_NOTE (2*THIRTY_SECOND_NOTE)
+#define EIGHTH_NOTE (2*SIXTEENTH_NOTE)
+#define QUARTER_NOTE (2*EIGHTH_NOTE)
+#define HALF_NOTE (2*QUARTER_NOTE)
+#define WHOLE_NOTE (2*HALF_NOTE)
 
 
 typedef struct {

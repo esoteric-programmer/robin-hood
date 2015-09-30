@@ -1,8 +1,8 @@
-#include "../Texture.h"
+#include "Texture.h"
 
 /* GIMP RGBA C-Source image dump (228.c) */
 
-extern const CRawImage TEXT_NEW_HIGHSCORE = {
+extern const RawImage TEXT_NEW_HIGHSCORE = {
   196, 29, 4,
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"

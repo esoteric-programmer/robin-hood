@@ -1,8 +1,8 @@
-#include "../Texture.h"
+#include "Texture.h"
 
 /* GIMP RGBA C-Source image dump (227.c) */
 
-extern const CRawImage TEXT_CONTINUE_ACTIVE = {
+extern const RawImage TEXT_CONTINUE_ACTIVE = {
   160, 38, 4,
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"

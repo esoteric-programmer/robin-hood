@@ -1,8 +1,8 @@
-#include "../Texture.h"
+#include "Texture.h"
 
 /* GIMP RGBA C-Source image dump (222.c) */
 
-extern const CRawImage TEMPO_FONT_NUMBERS_BIG = {
+extern const RawImage TEMPO_FONT_NUMBERS_BIG = {
   220, 38, 4,
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"

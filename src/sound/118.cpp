@@ -1,6 +1,6 @@
-#include "../Sound.h"
+#include "Sound.h"
 
-extern const CRawAudio SHOOTING_SOUND = { 
+extern const RawAudio SHOOTING_SOUND = { 
   CSND_ENCODING_PCM16, 44100, 10606,
   "\377\377\22\0\35\0\65\0\103\0\124\0\151\0\170\0\210\0\242\0\255\0\312"
   "\0\326\0\372\0\376\0\26\1\57\1\72\1\120\1\144\1\165\1\213\1\226\1\235"

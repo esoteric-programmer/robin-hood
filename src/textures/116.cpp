@@ -1,8 +1,8 @@
-#include "../Texture.h"
+#include "Texture.h"
 
 /* GIMP RGBA C-Source image dump (116.c) */
 
-extern const CRawImage ARROW = {
+extern const RawImage ARROW = {
   14, 3, 4,
   "\0\0\0\0\377\0B\377\377\0B\377\377\0B\377\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\347\245B\377\347\245B\377"

@@ -1,6 +1,6 @@
-#include "../Sound.h"
+#include "Sound.h"
 
-extern const CRawAudio JUMP_SOUND = { 
+extern const RawAudio JUMP_SOUND = { 
   CSND_ENCODING_PCM16, 44100, 23952,
   "\207\5\144\6\217\6\120\6\67\6\107\6\145\6\105\6\21\6\374\5\353\5\335"
   "\5\264\5\231\5\207\5\165\5\74\5\25\5\0\5\374\4\357\4\324\4\303\4\323"

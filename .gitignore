@@ -1,0 +1,7 @@
+build/*
+*~
+*.bak
+src/levels.inc
+*.3dsx
+*.smdh
+*.elf

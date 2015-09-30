@@ -11,8 +11,6 @@ typedef struct {
   const char*	 sound_data;
 } RawAudio;
 
-typedef const RawAudio CRawAudio;
-
 class CSound {
 private:
 	char* buffer;
@@ -25,7 +23,7 @@ private:
 	Rect display;
 
 public:
-	CSound(CRawAudio, float volume = 1.0f);
+	CSound(const RawAudio, float volume = 1.0f);
 	
 	void play(s16 transpose = 0);
 	void set_display_area(Rect display);

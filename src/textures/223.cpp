@@ -1,8 +1,8 @@
-#include "../Texture.h"
+#include "Texture.h"
 
 /* GIMP RGBA C-Source image dump (223.c) */
 
-extern const CRawImage INFOBOX = {
+extern const RawImage INFOBOX = {
   202, 102, 4,
   "K\225~\377K\225~\377K\225~\377K\225~\377K\225~\377K\225~\377K\225~\377K\225"
   "~\377K\225~\377K\225~\377K\225~\377K\225~\377K\225~\377K\225~\377K\225~\377"

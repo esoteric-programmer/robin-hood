@@ -1,8 +1,8 @@
-#include "../Texture.h"
+#include "Texture.h"
 
 /* GIMP RGBA C-Source image dump (134.c) */
 
-extern const CRawImage STONES = {
+extern const RawImage STONES = {
   16, 11, 4,
   "\377\377\377\0\377\377\377\0\377\377\377\0\377\377\377\0$$$9)))\302111\311"
   "$$$\254\0\0\0\15\377\377\377\0\377\377\377\0\377\377\377\0\377\377\377\0"

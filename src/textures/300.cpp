@@ -1,8 +1,8 @@
-#include "../Texture.h"
+#include "Texture.h"
 
 /* Alpha channel C-Source image dump (300.c) */
 
-extern const CRawImage TEMPO_FONT = {
+extern const RawImage TEMPO_FONT = {
   879, 16, 1,
   "\0\0\0\0\0\0\0\255\274\0\0\0\327\147\0\230\245\0\0\0\0\353\40\0\177\215"
   "\0\0\0\0\0\234\0\0\0\0\0\0\21\237\273\261\114\0\4\115\330\25\0\0\0\0"

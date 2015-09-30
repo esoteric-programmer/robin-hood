@@ -1,6 +1,6 @@
 #include "Music.h"
 
-CMusic::CMusic(Composition c, CRawAudio instrument, float volume) {
+CMusic::CMusic(Composition c, const RawAudio instrument, float volume) {
 	this->c.n_bars = 0;
 	this->c.bars = 0;
 	copy_composition(this->c, c);
@@ -16,15 +16,20 @@ void CMusic::play() {
 	this->note = this->c.bars[this->bar].n_notes-1;
 	this->note_time_gone = this->c.bars[this->bar].notes[this->note].value-1;
 	this->playing = true;
+	if (this->sound_active && !this->paused) {
+	    this->sound->stop();
+	}
 	this->paused = false;
 	this->sound_active = false;
 }
 
 void CMusic::stop() {
 	this->playing = false;
+	if (this->sound_active && !this->paused) {
+	    this->sound->stop();
+	}
 	this->paused = false;
 	this->sound_active = false;
-	this->sound->stop();
 }
 
 void CMusic::update(u16 ticks) {
@@ -59,7 +64,7 @@ void CMusic::update(u16 ticks) {
 		}else if (this->c.bars[this->bar].notes[note].value < this->note_time_gone+SILENCE_AT_END) {
 			stop = true;;
 		}
-		if (stop || play_new) {
+		if (this->sound_active && (stop || play_new)) {
 			this->sound->stop();
 			this->sound_active = false;
 		}
@@ -88,8 +93,9 @@ void CMusic::pause() {
 	if (this->paused)
 		return;
 	this->paused = true;
-	if (this->sound_active)
+	if (this->sound_active) {
 		this->sound->stop();
+	}
 }
 void CMusic::resume() {
 	if (!this->paused)

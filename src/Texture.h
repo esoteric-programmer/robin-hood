@@ -11,8 +11,6 @@ typedef struct {
   const char*	 pixel_data;
 } RawImage;
 
-typedef const RawImage CRawImage;
-
 class CTexture {
 private:
 	sf2d_texture* texture;

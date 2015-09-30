@@ -1,8 +1,8 @@
-#include "../Texture.h"
+#include "Texture.h"
 
 /* GIMP RGBA C-Source image dump (200.c) */
 
-extern const CRawImage TOUCH_BG = {
+extern const RawImage TOUCH_BG = {
   320, 240, 4,
   "\313\377\356\377\313\377\357\377\313\377\356\377\313\377\357\377\313\377"
   "\357\377\313\377\357\377\313\377\357\377\313\377\357\377\313\377\356\377"

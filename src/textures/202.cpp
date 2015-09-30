@@ -2,7 +2,7 @@
 
 /* GIMP RGBA C-Source image dump (202.c) */
 
-extern const CRawImage BUTTON_ACTIVE = {
+extern const RawImage BUTTON_ACTIVE = {
   265, 60, 4,
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"

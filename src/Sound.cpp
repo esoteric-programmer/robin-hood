@@ -4,7 +4,7 @@
 
 u32 CSound::channel = 0x8;
 
-CSound::CSound(CRawAudio audio, float volume) {
+CSound::CSound(const RawAudio audio, float volume) {
 	this->size = audio.size;
 	while (this->size % 4 != 0)
 		this->size++;

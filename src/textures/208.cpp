@@ -2,7 +2,7 @@
 
 /* GIMP RGBA C-Source image dump (208.c) */
 
-extern const CRawImage TEXT_EXIT_ACTIVE = {
+extern const RawImage TEXT_EXIT_ACTIVE = {
   75, 38, 4,
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"

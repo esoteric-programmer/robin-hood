@@ -1,8 +1,8 @@
-#include "../Texture.h"
+#include "Texture.h"
 
 /* GIMP RGBA C-Source image dump (100.c) */
 
-extern const CRawImage SPLASH_SCREEN = {
+extern const RawImage SPLASH_SCREEN = {
   400, 240, 4,
   "\377\377\377\0\377\377\377\0\377\377\377\0\377\377\377\0\377\377\377\0\377"
   "\377\377\0\377\377\377\0\377\377\377\0\377\377\377\0\377\377\377\0\377\377"

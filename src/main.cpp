@@ -2,15 +2,12 @@
 
 // ugly code in main() function. sorry for that!
 
-// TODO: timing
-//       u64 osGetTime(); returns number of milliseconds since 1st Jan 1900 00:00.
 // TODO: Level 4: Add clouds and nature (trees, flowers, stones)
 // TODO: always check success of allocating memory
 // TODO: buffer "Highscore: %d"-texture.
 // TODO: enable 3D (clouds in background)
 // TODO: add piano to background music (cf. Telemann's Sonata in F Major)
 // TODO: use more constants and put them into a header file
-
 // TODO: when Robin shot an arrow, he should take a new one from the quiver (add an animation!)
 
 
@@ -38,68 +35,68 @@
 
 
 RawImage BACKGROUND;
-extern const CRawImage SPLASH_SCREEN;
-extern const CRawImage ROBIN_RIGHT;
-extern const CRawImage ROBIN_WALKING_RIGHT;
-extern const CRawImage GRASS;
-extern const CRawImage GRASS_LEFT;
-extern const CRawImage GRASS_RIGHT;
-extern const CRawImage GRASS_LEFT_RIGHT;
-extern const CRawImage FINISH;
-extern const CRawImage FINISH_GERMAN;
-extern const CRawImage ENEMY_RIGHT;
-extern const CRawImage ENEMY_WALKING_RIGHT;
-extern const CRawImage ARROW;
-extern const CRawImage SOLID_BLOCK;
-extern const CRawImage ENEMY_ATTACK;
+extern const RawImage SPLASH_SCREEN;
+extern const RawImage ROBIN_RIGHT;
+extern const RawImage ROBIN_WALKING_RIGHT;
+extern const RawImage GRASS;
+extern const RawImage GRASS_LEFT;
+extern const RawImage GRASS_RIGHT;
+extern const RawImage GRASS_LEFT_RIGHT;
+extern const RawImage FINISH;
+extern const RawImage FINISH_GERMAN;
+extern const RawImage ENEMY_RIGHT;
+extern const RawImage ENEMY_WALKING_RIGHT;
+extern const RawImage ARROW;
+extern const RawImage SOLID_BLOCK;
+extern const RawImage ENEMY_ATTACK;
 
-extern const CRawImage FLOWER1_1;
-extern const CRawImage FLOWER1_2;
-extern const CRawImage TREE;
-extern const CRawImage STONES;
+extern const RawImage FLOWER1_1;
+extern const RawImage FLOWER1_2;
+extern const RawImage TREE;
+extern const RawImage STONES;
 
-extern const CRawImage CLOUD_1;
-extern const CRawImage CLOUD_2;
-extern const CRawImage CLOUD_3;
+extern const RawImage CLOUD_1;
+extern const RawImage CLOUD_2;
+extern const RawImage CLOUD_3;
 
-extern const CRawImage TOUCH_BG;
-extern const CRawImage BUTTON;
-extern const CRawImage BUTTON_ACTIVE;
-extern const CRawImage TEXT_START;
-extern const CRawImage TEXT_START_ACTIVE;
-extern const CRawImage TEXT_LEVEL_SELECT;
-extern const CRawImage TEXT_LEVEL_SELECT_ACTIVE;
-extern const CRawImage TEXT_EXIT;
-extern const CRawImage TEXT_EXIT_ACTIVE;
-extern const CRawImage TEXT_GIVE_UP;
-extern const CRawImage TEXT_GIVE_UP_ACTIVE;
-extern const CRawImage TEXT_PAUSE;
-extern const CRawImage TEXT_PAUSE_ACTIVE;
-extern const CRawImage TEXT_RESUME;
-extern const CRawImage TEXT_RESUME_ACTIVE;
-extern const CRawImage TEXT_PLAY;
-extern const CRawImage TEXT_PLAY_ACTIVE;
-extern const CRawImage TEXT_BACK;
-extern const CRawImage TEXT_BACK_ACTIVE;
-extern const CRawImage NEXT;
-extern const CRawImage NEXT_ACTIVE;
-extern const CRawImage TEXT_LEVEL;
-extern const CRawImage TEXT_CONTINUE;
-extern const CRawImage TEXT_CONTINUE_ACTIVE;
-extern const CRawImage TEXT_QUIT;
-extern const CRawImage TEXT_QUIT_ACTIVE;
+extern const RawImage TOUCH_BG;
+extern const RawImage BUTTON;
+extern const RawImage BUTTON_ACTIVE;
+extern const RawImage TEXT_START;
+extern const RawImage TEXT_START_ACTIVE;
+extern const RawImage TEXT_LEVEL_SELECT;
+extern const RawImage TEXT_LEVEL_SELECT_ACTIVE;
+extern const RawImage TEXT_EXIT;
+extern const RawImage TEXT_EXIT_ACTIVE;
+extern const RawImage TEXT_GIVE_UP;
+extern const RawImage TEXT_GIVE_UP_ACTIVE;
+extern const RawImage TEXT_PAUSE;
+extern const RawImage TEXT_PAUSE_ACTIVE;
+extern const RawImage TEXT_RESUME;
+extern const RawImage TEXT_RESUME_ACTIVE;
+extern const RawImage TEXT_PLAY;
+extern const RawImage TEXT_PLAY_ACTIVE;
+extern const RawImage TEXT_BACK;
+extern const RawImage TEXT_BACK_ACTIVE;
+extern const RawImage NEXT;
+extern const RawImage NEXT_ACTIVE;
+extern const RawImage TEXT_LEVEL;
+extern const RawImage TEXT_CONTINUE;
+extern const RawImage TEXT_CONTINUE_ACTIVE;
+extern const RawImage TEXT_QUIT;
+extern const RawImage TEXT_QUIT_ACTIVE;
 
-extern const CRawImage INFOBOX;
-extern const CRawImage TEXT_NEW_HIGHSCORE;
-extern const CRawImage TEXT_YOUR_SCORE;
+extern const RawImage INFOBOX;
+extern const RawImage TEXT_NEW_HIGHSCORE;
+extern const RawImage TEXT_YOUR_SCORE;
 
-extern const CRawImage TEMPO_FONT_NUMBERS_BIG;
-extern const CRawImage TEMPO_FONT;
+extern const RawImage TEMPO_FONT_NUMBERS_BIG;
+extern const RawImage TEMPO_FONT;
 
-extern const CRawAudio JUMP_SOUND;
-extern const CRawAudio SHOOTING_SOUND;
-extern const CRawAudio THROWING_KNIFE_SOUND;
-extern const CRawAudio CLARINET_SOUND;
+extern const RawAudio JUMP_SOUND;
+extern const RawAudio SHOOTING_SOUND;
+extern const RawAudio THROWING_KNIFE_SOUND;
+extern const RawAudio CLARINET_SOUND;
 
 sf2d_texture* tempo_font_numbers_big_texture = 0;
 
@@ -115,21 +112,8 @@ bool load_level(u16 level, CLandscapeList* landscapelist, CLandscapeList* nature
 
 u16 draw_number_big(s16 x, s16 y, u16 number, bool get_width);
 
-/*
-u64 last_tick = 0;
-u32 time_left() {
-	u64 cur_tick = osGetTime();
-	if (last_tick == 0)
-		last_tick = cur_tick;
-	u32 left = (u32)((cur_tick-last_tick)*7/100);
-	u32 tmp = ((cur_tick-last_tick)*7%100);
-	last_tick = cur_tick;
-	return left;
-}
-*/
 
 int main() {
-	//srand(osGetTime()); // needs stdlib.h
 	sf2d_init();
 	csndInit();
 	
@@ -416,7 +400,7 @@ int main() {
 						fflush(handle);
 					}
 				}
-				// TODO: stop and show score; check for highscore
+				// stop and show score; check for highscore
 				
 				// CHECK FOR HIGHSCORE
 				new_highscore = false;
@@ -920,14 +904,36 @@ bool load_level(u16 level, CLandscapeList* landscapelist, CLandscapeList* nature
 	s16 start_x=0;
 	s16 start_y=32;
 
-	#define LEVEL_SIZE(x,y) level_width = (x); level_height = (y);
-	#define START(x,y) start_x = (x); start_y = (y);
-	#define FINISH(x,y) finish->set_position((x), -(y)-FINISH.height);
-	#define BONUS(x) bonus = (x);
-	#define LANDSCAPE(x, ...) n_landscape = (x); LandscapeObject landscape[(x)] = { __VA_ARGS__ }; _landscape = new LandscapeObject[n_landscape]; memcpy(_landscape, landscape, n_landscape*sizeof(LandscapeObject));
-	#define NATURE(x, ...) n_nature = (x); LandscapeObject nature[(x)] = { __VA_ARGS__ }; _nature = new LandscapeObject[n_nature]; memcpy(_nature, nature, n_nature*sizeof(LandscapeObject));
-	#define CLOUDS(x, ...) n_clouds = (x); LandscapeObject clouds[(x)] = { __VA_ARGS__ }; _clouds = new LandscapeObject[n_clouds]; memcpy(_clouds, clouds, n_clouds*sizeof(LandscapeObject));
-	#define ENEMIES(x, ...) n_enemies = (x); EnemyObject enemies[(x)] = { __VA_ARGS__ }; _enemies = new EnemyObject[n_enemies]; memcpy(_enemies, enemies, n_enemies*sizeof(EnemyObject));
+	#define LEVEL_SIZE(x,y) \
+			level_width = (x); \
+			level_height = (y);
+	#define START(x,y) \
+			start_x = (x); \
+			start_y = (y);
+	#define FINISH(x,y) \
+			finish->set_position((x), -(y)-FINISH.height);
+	#define BONUS(x) \
+			bonus = (x);
+	#define LANDSCAPE(x, ...) \
+			n_landscape = (x); \
+			LandscapeObject landscape[(x)] = { __VA_ARGS__ }; \
+			_landscape = new LandscapeObject[n_landscape]; \
+			memcpy(_landscape, landscape, n_landscape*sizeof(LandscapeObject));
+	#define NATURE(x, ...) \
+			n_nature = (x); \
+			LandscapeObject nature[(x)] = { __VA_ARGS__ }; \
+			_nature = new LandscapeObject[n_nature]; \
+			memcpy(_nature, nature, n_nature*sizeof(LandscapeObject));
+	#define CLOUDS(x, ...) \
+			n_clouds = (x); \
+			LandscapeObject clouds[(x)] = { __VA_ARGS__ }; \
+			_clouds = new LandscapeObject[n_clouds]; \
+			memcpy(_clouds, clouds, n_clouds*sizeof(LandscapeObject));
+	#define ENEMIES(x, ...) \
+			n_enemies = (x); \
+			EnemyObject enemies[(x)] = { __VA_ARGS__ }; \
+			_enemies = new EnemyObject[n_enemies]; \
+			memcpy(_enemies, enemies, n_enemies*sizeof(EnemyObject));
 	#define DEVELOPER_HIGHSCORE(x) { };
 	/**
 Maybe add some of these macros:

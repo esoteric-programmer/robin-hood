@@ -1,6 +1,6 @@
-#include "../Sound.h"
+#include "Sound.h"
 
-extern const CRawAudio THROWING_KNIFE_SOUND = { 
+extern const RawAudio THROWING_KNIFE_SOUND = { 
   CSND_ENCODING_PCM16, 44100, 8300,
   "\0\0\377\377\377\377\376\377\377\377\1\0\363\377\3\0\361\377\377\377"
   "\2\0\375\377\376\377\363\377\367\377\346\377\10\0\364\377\372\377\375"

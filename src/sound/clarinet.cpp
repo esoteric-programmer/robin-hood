@@ -5,9 +5,9 @@
  * By OLPC (One Laptop per Child), http://wiki.laptop.org/go/Sound_samples
  */
 
-#include "../Sound.h"
+#include "Sound.h"
 
-extern const CRawAudio CLARINET_SOUND = { 
+extern const RawAudio CLARINET_SOUND = { 
   CSND_ENCODING_PCM16, 22050, 220376,
   "\26\0\56\0\100\0\112\0\130\0\141\0\152\0\163\0\165\0\167\0\161\0\134"
   "\0\112\0\70\0\56\0\51\0\61\0\52\0\24\0\374\377\350\377\326\377\312\377"

@@ -2,7 +2,7 @@
 
 /* GIMP RGBA C-Source image dump (209.c) */
 
-extern const CRawImage TEXT_PAUSE = {
+extern const RawImage TEXT_PAUSE = {
   104, 38, 4,
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"

@@ -2,7 +2,7 @@
 
 #include "TempoFont.h"
 #include "Texture.h"
-extern const CRawImage TEMPO_FONT; // 300.cpp
+extern const RawImage TEMPO_FONT; // 300.cpp
 
 Rect draw_string_bb(const char* string, Font font, Color color, s16 x, s16 y, Alignment alignment, bool draw, bool bb_ignore_overflow, CTexture*& created_texture);
 

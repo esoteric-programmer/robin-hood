@@ -2,7 +2,7 @@
 
 /* GIMP RGBA C-Source image dump (205.c) */
 
-extern const CRawImage TEXT_LEVEL_SELECT = {
+extern const RawImage TEXT_LEVEL_SELECT = {
   224, 38, 4,
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
   "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
