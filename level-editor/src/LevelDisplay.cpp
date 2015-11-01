@@ -1,6 +1,24 @@
 #include "LevelDisplay.h"
 
-CLevelDisplay::CLevelDisplay(Vector initial_size) {
+extern const RawImage ROBIN_RIGHT;
+extern const RawImage GRASS;
+extern const RawImage GRASS_LEFT;
+extern const RawImage GRASS_RIGHT;
+extern const RawImage GRASS_LEFT_RIGHT;
+extern const RawImage SOLID_BLOCK;
+extern const RawImage FINISH;
+extern const RawImage ROBIN_RIGHT;
+extern const RawImage ENEMY_RIGHT;
+extern const RawImage FLOWER1_1;
+extern const RawImage STONES;
+
+CLevelDisplay::CLevelDisplay(Vector initial_size) :
+		grass(GRASS), grass_r(GRASS_RIGHT),
+		grass_l(GRASS_LEFT), grass_lr(GRASS_LEFT_RIGHT),
+		finish(FINISH),
+		solid(SOLID_BLOCK),
+		robin(ROBIN_RIGHT), enemy(ENEMY_RIGHT),
+		flower(FLOWER1_1), stones(STONES) {
 
 	this->display = rgba_sf(initial_size.x, initial_size.y);
 
@@ -34,13 +52,6 @@ void CLevelDisplay::change_size(Vector size) {
 	this->display = rgba_sf(size.x, size.y);
 }
 
-extern const RawImage ROBIN_RIGHT;
-extern const RawImage GRASS;
-extern const RawImage GRASS_LEFT;
-extern const RawImage GRASS_RIGHT;
-extern const RawImage GRASS_LEFT_RIGHT;
-extern const RawImage FINISH;
-
 void CLevelDisplay::draw(SDL_Surface* screen, Vector position, CMouse* mouse) {
 
 	if (screen == 0 || this->display == 0 || this->background == 0) {
@@ -48,21 +59,12 @@ void CLevelDisplay::draw(SDL_Surface* screen, Vector position, CMouse* mouse) {
 	}
 
 	SDL_Rect dsp = {0,0,this->display->w,this->display->h};
-
 	SDL_FillRect(this->display, 0, SDL_MapRGB(this->display->format,0x7F,0x7F,0x7F));
 	this->background->draw_scaled(dsp,this->display,true);
 	
-	CTexture robin(ROBIN_RIGHT);
-	robin.draw(this->level.get_start_pos().x,this->level.get_start_pos().y,this->display);
-	CTexture grass(GRASS);
-	CTexture grass_r(GRASS_RIGHT);
-	CTexture grass_l(GRASS_LEFT);
-	CTexture grass_lr(GRASS_LEFT_RIGHT);
-	
+
 	CLevel::Landscape* it = this->level.get_landscape_list()->first();
-	
 	while (it != 0) {
-	
 		switch (it->type) {
 			case 0:
 				// GRASS
@@ -87,12 +89,10 @@ void CLevelDisplay::draw(SDL_Surface* screen, Vector position, CMouse* mouse) {
 				// UNKNOWN
 				break;
 		}
-	
 		it = this->level.get_landscape_list()->next();
 	}
-	
-	CTexture finish(FINISH);
 	finish.draw(this->level.get_finish_pos().x,this->level.get_finish_pos().y,this->display);
+	robin.draw(this->level.get_start_pos().x,this->level.get_start_pos().y,this->display);
 	
 	if (mouse != 0) {
 		Vector mp = mouse->get_coordinates();
@@ -104,6 +104,24 @@ void CLevelDisplay::draw(SDL_Surface* screen, Vector position, CMouse* mouse) {
 			switch (mouse->get_type()) {
 				case CMouse::GRASS:
 					grass.draw(mp.x - grass.get_width()/2, mp.y - grass.get_height()/2, this->display, false, true);
+					break;
+				case CMouse::SOLID:
+					solid.draw(mp.x - solid.get_width()/2, mp.y - solid.get_height()/2, this->display, false, true);
+					break;
+				case CMouse::ROBIN:
+					robin.draw(mp.x - robin.get_width()/2, mp.y - robin.get_height()/2, this->display, false, true);
+					break;
+				case CMouse::ENEMY:
+					enemy.draw(mp.x - enemy.get_width()/2, mp.y - enemy.get_height()/2, this->display, false, true);
+					break;
+				case CMouse::FINISH:
+					finish.draw(mp.x - finish.get_width()/2, mp.y - finish.get_height()/2, this->display, false, true);
+					break;
+				case CMouse::FLOWER:
+					flower.draw(mp.x - flower.get_width()/2, mp.y - flower.get_height()/2, this->display, false, true);
+					break;
+				case CMouse::STONE:
+					stones.draw(mp.x - stones.get_width()/2, mp.y - stones.get_height()/2, this->display, false, true);
 					break;
 				default:
 					break;

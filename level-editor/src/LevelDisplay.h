@@ -27,6 +27,18 @@ private:
 	void* selected_object;
 	
 	CLevel level;
+	
+	// textures
+	CTexture robin;
+	CTexture grass;
+	CTexture grass_r;
+	CTexture grass_l;
+	CTexture grass_lr;
+	CTexture finish;
+	CTexture solid;
+	CTexture enemy;
+	CTexture flower;
+	CTexture stones;
 
 public:
 	CLevelDisplay(Vector initial_size);
