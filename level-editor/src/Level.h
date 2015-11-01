@@ -57,6 +57,9 @@ private:
 	unsigned int width;
 	unsigned int height;
 	
+	void tidy_up();
+	void add_base();
+	
 public:
 	CLevel();
 

@@ -9,9 +9,7 @@
 #include "List.h"
 #include "tools.h"
 
-// TODO: Manage Texture-Instances in extra class; get them from that class when needed
-//       Scrolling / Scrolling-Offset??
-//       Get and set level size (l_w, l_h) from extern
+// TODO: Scrolling / Scrolling-Offset??
 
 class CLevelDisplay {
 private:

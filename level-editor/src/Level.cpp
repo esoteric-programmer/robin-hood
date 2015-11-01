@@ -5,6 +5,14 @@ CLevel::CLevel() :
 		const_nature_list(&nature_list),
 		const_enemy_list(&enemy_list),
 		const_cloud_list(&cloud_list) {
+	add_base();
+}
+
+void CLevel::tidy_up() {
+	// TODO clear level, free memory
+}
+
+void CLevel::add_base() {
 	width = 400;
 	height = 240;
 	start_pos.x = 0;
@@ -35,7 +43,8 @@ CLevel::CLevel() :
 }
 
 void CLevel::clear() {
-	// TODO
+	this->tidy_up();
+	this->add_base();
 }
 
 void CLevel::load_from_file(const char* file) {
@@ -130,6 +139,6 @@ Vector CLevel::get_finish_pos() {
 }
 	
 CLevel::~CLevel() {
-	this->clear();
+	this->tidy_up();
 }
 
