@@ -26,7 +26,7 @@ extern const RawImage TOOLBOX_SELECTION;
 
 bool redraw_in_queue = false;
 
-bool redraw(Uint32 window_id) {
+void redraw(Uint32 window_id) {
 	if (!redraw_in_queue) {
 		redraw_in_queue = true;
 		SDL_Event sdlevent;
@@ -99,7 +99,10 @@ int main(int argc, char* argv[]) {
 				if (event.button.button == SDL_BUTTON_LEFT) {
 					SDL_GetMouseState(&mouse_pos.x, &mouse_pos.y);
 					tb.click(&mouse, tb_pos);
+					ld.click(&mouse, ld_pos);
+					redraw(SDL_GetWindowID(window));
 				}
+				break;
 			default:
 				break;
 		}

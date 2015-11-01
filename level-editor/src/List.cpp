@@ -98,7 +98,46 @@ template <typename T> T* CList<T>::remove(unsigned int id) {
 }
 
 template <typename T> bool CList<T>::remove(T* element) {
-	// TODO
+
+	if (this->lsize == 0) {
+		return false;
+	}
+	
+	if (this->root.elem == element) {
+		if (root.next != 0) {
+			List* tmp = root.next;
+			root.elem = root.next->elem;
+			root.next = root.next->next;
+			if (this->last == root.next) {
+				this->last = &(this->root);
+			}
+			this->cur = 0;
+			this->prev = 0;
+			delete tmp;
+		} else {
+			root.elem = 0;
+		}
+		this->lsize--;
+		return true;
+	}
+
+
+	struct List* it = &(this->root);
+	while (it->next != 0) {
+		if (it->next->elem == element) {
+			struct List* tmp = it->next;
+			it->next = it->next->next;
+			if (it->next == 0) {
+				this->last = it;
+			}
+			this->cur = 0;
+			this->prev = 0;
+			delete tmp;
+			lsize--;
+			return true;
+		}
+		it = it->next;
+	}
 	return false;
 }
 

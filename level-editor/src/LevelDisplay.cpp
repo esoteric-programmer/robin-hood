@@ -21,6 +21,7 @@ CLevelDisplay::CLevelDisplay(Vector initial_size) :
 		flower(FLOWER1_1), stones(STONES) {
 
 	this->display = rgba_sf(initial_size.x, initial_size.y);
+	this->mouse_snap_to_grid = true;
 
 	RawImage BACKGROUND;
 	BACKGROUND.width=1;
@@ -84,6 +85,7 @@ void CLevelDisplay::draw(SDL_Surface* screen, Vector position, CMouse* mouse) {
 				break;
 			case 1:
 				// SOLID
+				solid.draw(it->x, it->y,this->display);
 				break;
 			default:
 				// UNKNOWN
@@ -91,43 +93,18 @@ void CLevelDisplay::draw(SDL_Surface* screen, Vector position, CMouse* mouse) {
 		}
 		it = this->level.get_landscape_list()->next();
 	}
+	// TODO: enemies, nature, ...
 	finish.draw(this->level.get_finish_pos().x,this->level.get_finish_pos().y,this->display);
 	robin.draw(this->level.get_start_pos().x,this->level.get_start_pos().y,this->display);
 	
-	if (mouse != 0) {
-		Vector mp = mouse->get_coordinates();
-		mp.x -= position.x;
-		mp.y -= position.y;
-		//printf("mouse: %d, %d\n",mp.x + grass.get_width()/2, mp.y + grass.get_height()/2);
-		if (mp.x >= 0 && mp.x < this->display->w && mp.y >= 0 && mp.y < this->display->h) {
-			// draw mouse!
-			switch (mouse->get_type()) {
-				case CMouse::GRASS:
-					grass.draw(mp.x - grass.get_width()/2, mp.y - grass.get_height()/2, this->display, false, true);
-					break;
-				case CMouse::SOLID:
-					solid.draw(mp.x - solid.get_width()/2, mp.y - solid.get_height()/2, this->display, false, true);
-					break;
-				case CMouse::ROBIN:
-					robin.draw(mp.x - robin.get_width()/2, mp.y - robin.get_height()/2, this->display, false, true);
-					break;
-				case CMouse::ENEMY:
-					enemy.draw(mp.x - enemy.get_width()/2, mp.y - enemy.get_height()/2, this->display, false, true);
-					break;
-				case CMouse::FINISH:
-					finish.draw(mp.x - finish.get_width()/2, mp.y - finish.get_height()/2, this->display, false, true);
-					break;
-				case CMouse::FLOWER:
-					flower.draw(mp.x - flower.get_width()/2, mp.y - flower.get_height()/2, this->display, false, true);
-					break;
-				case CMouse::STONE:
-					stones.draw(mp.x - stones.get_width()/2, mp.y - stones.get_height()/2, this->display, false, true);
-					break;
-				default:
-					break;
-			}
-		}
+	int x = 0;
+	int y = 0;
+	CTexture* draw_mouse = 0;
+	process_mouse(mouse, position, draw_mouse, x, y);
+	if (draw_mouse != 0) {
+		draw_mouse->draw(x, y, this->display);
 	}
+
 	
 	SDL_Rect pos = {position.x,position.y,this->display->w,this->display->h};
 	SDL_BlitSurface(this->display, 0, screen, &pos);
@@ -135,6 +112,95 @@ void CLevelDisplay::draw(SDL_Surface* screen, Vector position, CMouse* mouse) {
 }
 
 void CLevelDisplay::click(CMouse* mouse, Vector lvldisplay_position) {
+	int x = 0;
+	int y = 0;
+	CTexture* draw_mouse = 0;
+	process_mouse(mouse, lvldisplay_position, draw_mouse, x, y);
+	if (draw_mouse != 0) {
+		switch (mouse->get_type()) {
+			case CMouse::GRASS:
+				{
+					CLevel::Landscape grass = {x, y, 0, 0, 0};
+					this->level.add_landscape(grass);
+					break;
+				}
+			case CMouse::SOLID:
+				{
+					CLevel::Landscape solid = {x, y, 1, 0, 0};
+					this->level.add_landscape(solid);
+					break;
+				}
+			case CMouse::ROBIN:
+				{
+					Vector pos = {x, y};
+					this->level.set_start_pos(pos);
+					break;
+				}
+			case CMouse::FINISH:
+				{
+					Vector pos = {x, y};
+					this->level.set_finish_pos(pos);
+					break;
+				}
+			default:
+				// TODO: more cases
+				break;
+		}
+	}
+}
+
+void CLevelDisplay::process_mouse(CMouse* mouse, Vector display_pos, CTexture*& draw_mouse, int& x, int& y) {
+	draw_mouse = 0;
+	x = 0;
+	y = 0;
+	if (mouse != 0) {
+		Vector mp = mouse->get_coordinates();
+		mp.x -= display_pos.x;
+		mp.y -= display_pos.y;
+		mp.y = this->display->h - mp.y;
+		if (mp.x >= 0 && mp.x < this->display->w && mp.y >= 0 && mp.y < this->display->h) {
+			bool snap_to_grid_x = false;
+			bool snap_to_grid_y = false;
+			if (this->mouse_snap_to_grid) {
+				if (mouse->get_type() == CMouse::GRASS || mouse->get_type() == CMouse::SOLID) {
+					mp.x -= mp.x % 32;
+					snap_to_grid_x = true;
+				}
+				mp.y -= mp.y % 32;
+				snap_to_grid_y = true;
+			}
+			// draw mouse!
+			switch (mouse->get_type()) {
+				case CMouse::GRASS:
+					draw_mouse = &grass;
+					break;
+				case CMouse::SOLID:
+					draw_mouse = &solid;
+					break;
+				case CMouse::ROBIN:
+					draw_mouse = &robin;
+					break;
+				case CMouse::ENEMY:
+					draw_mouse = &enemy;
+					break;
+				case CMouse::FINISH:
+					draw_mouse = &finish;
+					break;
+				case CMouse::FLOWER:
+					draw_mouse = &flower;
+					break;
+				case CMouse::STONE:
+					draw_mouse = &stones;
+					break;
+				default:
+					break;
+			}
+			if (draw_mouse!=0) {
+				x = mp.x - (snap_to_grid_x?0:draw_mouse->get_width()/2);
+				y = mp.y - (snap_to_grid_y?0:draw_mouse->get_height()/2);
+			}
+		}
+	}
 }
 
 CLevelDisplay::~CLevelDisplay() {

@@ -88,7 +88,42 @@ void CLevel::set_height(unsigned int height) {
 }
 
 void CLevel::add_landscape(CLevel::Landscape landscape) {
-	// TODO
+	Landscape* nl = new Landscape;
+	if (nl != 0) {
+		nl->x = landscape.x;
+		nl->y = landscape.y;
+		nl->type = landscape.type;
+		nl->left = 0; // TODO
+		nl->right = 0; // TODO
+		
+		Landscape* it = this->landscape_list.first();
+		while (it != 0) {
+			if (it->type == nl->type) {
+				if (it->y == nl->y) {
+					if (it->x == nl->x-32) {
+						it->right = nl;
+						nl->left = it;
+					}
+					if (it->x == nl->x) {
+						delete nl;
+						return;
+					}
+					if (it->x == nl->x+32) {
+						it->left = nl;
+						nl->right = it;
+					}
+				}
+			}else{
+				if (it->x == nl->x && it->y == nl->y) {
+					remove_landscape(it);
+					it = this->landscape_list.first();
+					continue;
+				}
+			}
+			it = this->landscape_list.next();
+		}
+		this->landscape_list.add(nl);
+	}
 }
 
 void CLevel::add_nature(CLevel::Nature nature) {
@@ -104,7 +139,17 @@ void CLevel::add_cloud(CLevel::Landscape cloud) {
 }
 
 void CLevel::remove_landscape(CLevel::Landscape* landscape) {
-	// TODO
+	if (landscape == 0) {
+		return;
+	}
+	if (landscape->left != 0) {
+		landscape->left->right = 0;
+	}
+	if (landscape->right != 0) {
+		landscape->right->left = 0;
+	}
+	this->landscape_list.remove(landscape);
+	delete landscape;
 }
 
 void CLevel::remove_nature(CLevel::Nature* nature) {

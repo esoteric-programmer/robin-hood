@@ -43,7 +43,6 @@ void CToolbar::draw(SDL_Surface* screen, Vector position, CMouse* mouse) {
 		this->selection = mouse->get_type();
 	}
 
-	SDL_Rect dsp = {0,0,this->display->w,this->display->h};
 	SDL_FillRect(this->display, 0, SDL_MapRGB(this->display->format,0x7F,0x7F,0x7F));
 	
 	for (int i=0;i<8;i++) {
