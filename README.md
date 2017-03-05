@@ -18,8 +18,12 @@ I tried to create almost public domain sources.
 However, the clarinet sample, some images and the Makefile are (probably) not public domain (see LICENCE file).
 Note that the dependencies (ctrulib, sf2d, ...) are NOT in the public domain. Therefore, the binaries wouldn't be, either.
 
+You need to patch issue https://github.com/xerpi/sf2dlib/issues/41 in sf2dlib before compiling the game. In sf2d_texture.c change TEX\_MIN\_SIZE from 32 to 64.
 
 Changelog :
+v0.1.1
+	- Makefile supports building cia
+	- Updated to work with current sf2d
+
 v0.1
 	- Initial Release.
-

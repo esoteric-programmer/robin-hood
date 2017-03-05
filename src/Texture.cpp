@@ -41,11 +41,9 @@ u32 CTexture::pixel_at(s16 x, s16 y) {
 	// this function may be faulty -> TODO: fix it
 	if (this->texture == 0)
 		return 0;
-	if (this->texture->data == 0)
-		return 0;
 	if (x < 0 || y < 0 || x >= this->texture->width || y >= this->texture->height)
 		return 0;
-	return ((u32 *)this->texture->data)[y*this->texture->pow2_w + x];
+	return sf2d_get_pixel(this->texture, x, y);
 }
 
 CTexture::~CTexture() {
